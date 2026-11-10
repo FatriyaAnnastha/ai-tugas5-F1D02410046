@@ -1,0 +1,18 @@
+{
+  "judul": "Penilaian kesegaran telur ayam konsumsi berdasarkan lama dan kondisi penyimpanan",
+  "batas": "Aturan berasal dari 2 artikel jurnal Indonesia: satu pada telur ayam ras di pasar sekitar Bogor (merujuk SNI 3926:2008) dan satu pada telur Ayam Arab di suhu ruang 25-27 C dan refrigerator 4-7 C (merujuk SNI 3926:2023). Hanya mencakup lama simpan, kehilangan air dan gas, putih dan kuning telur, kantung udara, serta cemaran mikroba secara umum. Tidak menilai kerabang, tidak menggantikan uji laboratorium, dan tidak menentukan keamanan telur secara pasti. Hasilnya saran awal, bukan keputusan akhir.",
+  "sumber": {
+    "S1": "Kualitas Fisik, Mikrobiologis, dan Organoleptik Telur Konsumsi yang Beredar di Sekitar Kampus IPB, Darmaga, Bogor, Suharyanto, Sulaiman, Zebua, dan Arief, Jurnal Ilmu Produksi dan Teknologi Hasil Peternakan vol 4 no 2, hlm 275-279, Juni 2016, https://journal.ipb.ac.id/index.php/ipthp/article/download/17502/12559, diakses 8 Nov 2026",
+    "S2": "Kualitas Telur Ayam Arab Konsumsi dan Perubahan Mutunya selama Penyimpanan pada Suhu yang Berbeda, Pisestyani, Wijaya, Handharyani, dan Lukman, Jurnal Nukleus Peternakan vol 13 no 1, hlm 64-78, Universitas Nusa Cendana, Juni 2026, https://ejurnal.undana.ac.id/index.php/nukleus/article/download/24992/10193, diakses 8 Nov 2026"
+  },
+  "aturan": [
+    {"id": "R1", "jika": ["disimpan di suhu ruang lebih dari 14 hari", "disimpan di suhu dingin 4-7 C lebih dari 30 hari"], "mode": "atau", "maka": "masa simpan melebihi batas", "sumber": "S2"},
+    {"id": "R2", "jika": ["masa simpan melebihi batas"], "mode": "dan", "maka": "isi telur kehilangan air dan gas CO2", "sumber": "S1, S2"},
+    {"id": "R3", "jika": ["isi telur kehilangan air dan gas CO2"], "mode": "dan", "maka": "putih telur mengencer", "sumber": "S1, S2"},
+    {"id": "R4", "jika": ["putih telur mengencer"], "mode": "dan", "maka": "air berpindah dari putih ke kuning telur", "sumber": "S2"},
+    {"id": "R5", "jika": ["air berpindah dari putih ke kuning telur"], "mode": "dan", "maka": "kuning telur melembek dan indeks kuning telur menurun", "sumber": "S1, S2"},
+    {"id": "R6", "jika": ["putih telur mengencer", "kuning telur melembek dan indeks kuning telur menurun", "kantung udara lebih dari 0,9 cm"], "mode": "atau", "maka": "kesegaran telur menurun", "sumber": "S1, S2"},
+    {"id": "R7", "jika": ["putih telur kental tidak terlihat lagi saat dipecah"], "mode": "dan", "maka": "mutu putih telur sangat menurun", "sumber": "S2"},
+    {"id": "R8", "jika": ["disimpan di suhu ruang lebih dari 14 hari"], "mode": "dan", "maka": "risiko cemaran mikroba meningkat", "sumber": "S1, S2"}
+  ]
+}
